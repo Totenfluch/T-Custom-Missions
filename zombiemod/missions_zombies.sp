@@ -90,6 +90,9 @@ public Action OnTakeDamage(int victim, int &attacker, int &inflictor, float &dam
 	if (!isValidClient(attacker))
 		return Plugin_Continue;
 	
+	if (!IsPlayerAlive(attacker))
+		return Plugin_Continue;
+	
 	char weaponName[64];
 	GetClientWeapon(attacker, weaponName, sizeof(weaponName));
 	
@@ -114,6 +117,10 @@ public Action OnTakeDamage(int victim, int &attacker, int &inflictor, float &dam
 }
 
 public int Zone_OnClientEntry(int client, char[] zone) {
+	if (!isValidClient(client))
+		return;
+	if (!IsPlayerAlive(client))
+		return;
 	if (ZR_IsClientHuman(client)) {
 		if (StrContains(zone, "bossdone", false) != -1) {
 			Mission_IncrementMissionProgress(client, "kill_the_boss_1_un1");
@@ -168,6 +175,8 @@ public Action onRoundStart(Handle event, const char[] name, bool dontBroadcast) 
 public Action onRoundEnd(Handle event, const char[] name, bool dontBroadcast) {
 	for (int i = 1; i < MAXPLAYERS + 1; i++) {
 		if (!isValidClient(i))
+			continue;
+		if (!IsPlayerAlive(i))
 			continue;
 		if (ZR_IsClientHuman(i)) {
 			Mission_IncrementMissionProgress(i, "zombie_stay_alive_1_un1");
