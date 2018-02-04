@@ -14,10 +14,7 @@
 char takeGrenadeDamage[64] = "pyromancer_1_600";
 char takeGrenadeDamage2[64] = "pyromancer_2_900";
 
-char takeFallDamage[64];
-
-char takeNormalDamage[64];
-
+char takeFallDamage[64] = "freefall_1_200";
 
 public Plugin myinfo = 
 {
@@ -31,10 +28,9 @@ public Plugin myinfo =
 public void OnPluginStart() {
 	Missions_RegisterMission(takeGrenadeDamage, "Pyromancer", "Take 1000 damage from grenades", 1000, 600, "", "Self harm", true);
 	Missions_RegisterMission(takeGrenadeDamage2, "Crazy Pyromancer", "Take 2500 damage from grenades", 2500, 900, takeGrenadeDamage, "Self harm", true);
-	
+
 	Missions_RegisterMission(takeFallDamage, "Freefall", "Take 1000 falldamage", 1000, 200, "", "Self harm", true);
-	
-	//HookEvent("player_hurt", onPlayerHurt)
+
 }
 
 public void OnPluginEnd() {
@@ -63,8 +59,11 @@ public Action OnTakeDamage(int victim, int &attacker, int &inflictor, float &dam
 		Mission_AddToMissionProgress(victim, takeGrenadeDamage2, addvalue);
 	}
 	
-	
-	
+	if (damagetype & DMG_FALL) {
+		if (rDamage > preHp)
+			addvalue = preHp;
+		Mission_AddToMissionProgress(victim, takeFallDamage, addvalue);
+	}
 }
 
 
