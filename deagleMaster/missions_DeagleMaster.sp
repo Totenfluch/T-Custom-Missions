@@ -47,13 +47,12 @@ public Action onPlayerDeath(Event event, const char[] name, bool dontBroadcast) 
 	bool didDeagleHeadshot;
 	int attacker = GetClientOfUserId(event.GetInt("attacker"));
 	char weaponName[64];
-	if (!isValidClient(attacker)) {
-		
-	}
-	GetClientWeapon(attacker, weaponName, sizeof(weaponName));
-	if (StrEqual(weaponName, "weapon_deagle", false)) {
-		if (headshot) {
-			didDeagleHeadshot = true;
+	if (isValidClient(attacker)) {
+		GetClientWeapon(attacker, weaponName, sizeof(weaponName));
+		if (StrEqual(weaponName, "weapon_deagle", false)) {
+			if (headshot) {
+				didDeagleHeadshot = true;
+			}
 		}
 	}
 	if (didDeagleHeadshot) {
