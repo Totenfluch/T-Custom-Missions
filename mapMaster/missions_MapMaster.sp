@@ -8,7 +8,6 @@
 #include <sourcemod>
 #include <sdktools>
 #include <missions>
-#include <multicolors>
 #include <creditzones>
 
 
