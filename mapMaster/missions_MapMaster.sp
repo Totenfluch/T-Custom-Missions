@@ -55,7 +55,7 @@ char genericMapMasterDescription6[1024] = "Complete 150 Maps (Easy, Medium or Ha
 char preGenericMapMaster6[64] = "map_master_50_10000_rWUMASDFHUt";
 
 char genericMapMaster7[64] = "map_master_500_35000_rWPASDFHVDFHUt";
-char genericMapMasterName7[256] = "Map Master 5";
+char genericMapMasterName7[256] = "Map Master 7";
 char genericMapMasterDescription7[1024] = "Complete 500 Maps (Easy, Medium or Hard)";
 char preGenericMapMaster7[64] = "map_master_150_20000_rWQWERABSDFHUt";
 
