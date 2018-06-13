@@ -8,7 +8,6 @@
 #include <sourcemod>
 #include <sdktools>
 #include <missions>
-#include <scp>
 #include <ttt>
 #include <ttt_shop>
 
